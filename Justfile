@@ -67,6 +67,7 @@ build expr *west_args: _parse_combos
     echo "$targets" | while IFS=, read -r board shield snippet; do
         just _build_single "$board" "$shield" "$snippet" {{ west_args }}
     done
+    just draw
 
 # clear build cache and artifacts
 clean:
@@ -84,10 +85,13 @@ clean-nix:
 draw:
     #!/usr/bin/env bash
     set -euo pipefail
+    echo "Parsing keymap..."
     keymap -c "{{ draw }}/config.yaml" parse -z "{{ config }}/corne.keymap" >"{{ draw }}/base.yaml"
+    echo "Drawing vector graphics..."
     keymap -c "{{ draw }}/config.yaml" draw "{{ draw }}/base.yaml" >"{{ draw }}/base.svg"
     # put inkscape command here
-    inkscape --export-type png --export-filename {{ draw }}/keymap.png --export-dpi 300 --export-background=gray {{ draw }}/base.svg
+    echo "Converting to png..."
+    inkscape --export-type png --export-filename {{ draw }}/keymap.png --export-dpi 300 --export-background=gray {{ draw }}/base.svg > /dev/null 2>&1
 
 # initialize west
 init:
