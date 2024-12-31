@@ -4,6 +4,9 @@ This is my own ZMK config, forked from
 [urob's amazing config](https://github.com/urob/zmk-config), mainly for the
 super convenient nix-based build environment.
 
+Currently, `config/corne.keymap` is my own -- other configuration files are left
+over from urob, and I am keeping them here for easy reference and inspiration.
+
 I'll probably get around to documenting my own layout and design choices at some
 point. For now, please see urob's original readme (from the time of my fork)
 below.
