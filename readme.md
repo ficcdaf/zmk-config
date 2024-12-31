@@ -1,11 +1,17 @@
 # Daniel's ZMK Config
 
-This is my own ZMK config, forked from
-[urob's amazing config](https://github.com/urob/zmk-config), mainly for the
-super convenient nix-based build environment.
+Welcome to my ZMK wireless keyboard firmware config! The repository is forked
+from [urob's amazing config](https://github.com/urob/zmk-config), mainly for the
+super convenient nix-based build environment. Big thanks to urob for making a
+setup that was super easy to start building off of!
 
-Currently, `config/corne.keymap` is my own -- other configuration files are left
-over from urob, and I am keeping them here for easy reference and inspiration.
+Currently, I only own one ZMK keyboard, a 6 column choc Corne, so that board is
+what this configuration is optimized for. I've added a tiny bit of functionality
+on top of what urob provided: a `just flash <left|right>` command, and an
+improved `just draw` command that styles the output a little nicer and also
+immediately converts it to `png` format.
+
+![](draw/keymap.png)
 
 I'll probably get around to documenting my own layout and design choices at some
 point. For now, please see urob's original readme (from the time of my fork)
