@@ -18,6 +18,14 @@ ZMK_MOD_MORPH(smart_shft,
     bindings = <&sk LSHFT>, <&caps_word>;
     mods = <(MOD_LSFT)>;
 )
+/* ZMK_HOLD_TAP(nav_enter, */
+/*     #binding-cells = <2>; */
+/*     flavor = "hold-preferred"; */
+/*     tapping-term-ms = <200>; */
+/*     quick-tap-ms = <200>; */
+/*     require-prior-idle-ms = <125>; */
+/*     bindings = <&kp>, <&mo>; */
+/* ) */
 &caps_word {  // mods deactivate caps-word, requires PR #1451
     /delete-property/ ignore-modifiers;
 };
@@ -44,58 +52,62 @@ ZMK_MOD_MORPH(smart_shft,
         compatible = "zmk,keymap";
 
         default_layer {
+            label = "base";
             bindings = <
-//    ┌──────┬───┬───┬──────┬───────────────────────┬─────────────┐   ┌──────┬───────────────┬──────┬───┬───┬────────────┐
-//    │ esc  │ Q │ W │  F   │           P           │      B      │   │  J   │       L       │  U   │ Y │ ; │ lctl(lsft) │
-//    ├──────┼───┼───┼──────┼───────────────────────┼─────────────┤   ├──────┼───────────────┼──────┼───┼───┼────────────┤
-//    │ bspc │ A │ R │  S   │           T           │      G      │   │  M   │       N       │  E   │ I │ O │     '      │
-//    ├──────┼───┼───┼──────┼───────────────────────┼─────────────┤   ├──────┼───────────────┼──────┼───┼───┼────────────┤
-//    │ lsft │ Z │ X │  C   │           D           │      V      │   │  K   │       H       │  ,   │ . │ / │    tab     │
-//    └──────┴───┴───┼──────┼───────────────────────┼─────────────┤   ├──────┼───────────────┼──────┼───┴───┴────────────┘
-//                   │ lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ mo 1 │ &rpi lalt ent │ mo 2 │
-//                   └──────┴───────────────────────┴─────────────┘   └──────┴───────────────┴──────┘
-  &kp ESC     &kp Q   &kp W   &kp F      &kp P                     &kp B             &kp J   &kp L                 &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
-  &kp BSPC    &kp A   &kp R   &kp S      &kp T                     &kp G             &kp M   &kp N                 &kp E       &kp I     &kp O           &kp SQT
-  &kp LSHFT   &kp Z   &kp X   &kp C      &kp D                     &kp V             &kp K   &kp H                 &kp COMMA   &kp DOT   &kp FSLH        &kp TAB
-                              &kp LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &mo 1   &rpi LEFT_ALT ENTER   &mo 2
+//    ┌──────┬───┬───┬──────┬───────────────────────┬───────────────┐   ┌─────────────┬──────┬──────┬───┬───┬────────────┐
+//    │ esc  │ Q │ W │  F   │           P           │       B       │   │      J      │  L   │  U   │ Y │ ; │ lctl(lsft) │
+//    ├──────┼───┼───┼──────┼───────────────────────┼───────────────┤   ├─────────────┼──────┼──────┼───┼───┼────────────┤
+//    │ bspc │ A │ R │  S   │           T           │       G       │   │      M      │  N   │  E   │ I │ O │     '      │
+//    ├──────┼───┼───┼──────┼───────────────────────┼───────────────┤   ├─────────────┼──────┼──────┼───┼───┼────────────┤
+//    │ lsft │ Z │ X │  C   │           D           │       V       │   │      K      │  H   │  ,   │ . │ / │    tab     │
+//    └──────┴───┴───┼──────┼───────────────────────┼───────────────┤   ├─────────────┼──────┼──────┼───┴───┴────────────┘
+//                   │ lgui │ &rpi left_CONTROL spc │ &rpi lalt ent │   │ &smart_shft │ mo 2 │ mo 1 │
+//                   └──────┴───────────────────────┴───────────────┘   └─────────────┴──────┴──────┘
+  &kp ESC     &kp Q   &kp W   &kp F      &kp P                     &kp B                     &kp J         &kp L   &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
+  &kp BSPC    &kp A   &kp R   &kp S      &kp T                     &kp G                     &kp M         &kp N   &kp E       &kp I     &kp O           &kp SQT
+  &kp LSHFT   &kp Z   &kp X   &kp C      &kp D                     &kp V                     &kp K         &kp H   &kp COMMA   &kp DOT   &kp FSLH        &kp TAB
+                              &kp LGUI   &rpi LEFT_CONTROL SPACE   &rpi LEFT_ALT ENTER       &smart_shft   &mo 2   &mo 1
             >;
         };
 
-        nav_sym {
+        symbol {
+            label = "symbol";
             bindings = <
-//    ┌─────┬─────┬───┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬───┬─────┐
-//    │     │     │ ! │  (  │  )  │  %  │   │  @   │  &   │  *  │  =   │ + │     │
-//    ├─────┼─────┼───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───┼─────┤
-//    │     │  ^  │ - │  {  │  }  │  ~  │   │ left │ down │ up  │ rght │ $ │     │
-//    ├─────┼─────┼───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───┼─────┤
-//    │     │ esc │ _ │  [  │  ]  │ tab │   │      │  #   │  `  │  .   │ \ │  |  │
-//    └─────┴─────┴───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┴───┴─────┘
-//                    │     │     │     │   │      │      │     │
-//                    └─────┴─────┴─────┘   └──────┴──────┴─────┘
+//    ┌─────┬─────┬───┬─────┬─────┬─────┐   ┌──────┬─────┬─────┬──────┬───┬─────┐
+//    │     │     │ ! │  (  │  )  │  %  │   │  @   │  &  │  *  │  =   │ + │     │
+//    ├─────┼─────┼───┼─────┼─────┼─────┤   ├──────┼─────┼─────┼──────┼───┼─────┤
+//    │     │  ^  │ - │  {  │  }  │  ~  │   │ left │  <  │  >  │ rght │ $ │     │
+//    ├─────┼─────┼───┼─────┼─────┼─────┤   ├──────┼─────┼─────┼──────┼───┼─────┤
+//    │     │ esc │ _ │  [  │  ]  │ tab │   │      │  #  │  `  │  .   │ \ │  |  │
+//    └─────┴─────┴───┼─────┼─────┼─────┤   ├──────┼─────┼─────┼──────┴───┴─────┘
+//                    │     │     │     │   │      │     │     │
+//                    └─────┴─────┴─────┘   └──────┴─────┴─────┘
   &trans   &trans      &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &kp PERCENT       &kp AT     &kp AMPS   &kp STAR    &kp EQUAL   &kp PLUS     &trans
-  &trans   &kp CARET   &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE         &kp LEFT   &kp DOWN   &kp UP      &kp RIGHT   &kp DOLLAR   &trans
+  &trans   &kp CARET   &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE         &kp LEFT   &kp LT     &kp GT      &kp RIGHT   &kp DOLLAR   &trans
   &trans   &kp ESC     &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &kp TAB           &trans     &kp HASH   &kp GRAVE   &kp DOT     &kp BSLH     &kp PIPE
                                    &trans                 &trans                  &trans            &trans     &trans     &trans
             >;
         };
-        num {
+        nav {
+            label = "nav";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │  1  │  2  │  3  │  4  │  5  │   │  6  │  7  │  8  │  9  │  0  │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                      │     │     │     │   │     │     │     │
-//                      └─────┴─────┴─────┘   └─────┴─────┴─────┘
-  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-  &trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6   &kp N7   &kp N8   &kp N9   &kp N0   &trans
-  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-                             &trans   &trans   &trans       &trans   &trans   &trans
+//    ┌─────┬───┬───┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬─────┬─────┐
+//    │     │ 1 │ 2 │  3  │  4  │  5  │   │  6   │  7   │  8  │  9   │  0  │     │
+//    ├─────┼───┼───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
+//    │  0  │ 1 │ 2 │  3  │  4  │  9  │   │ left │ down │ up  │ rght │     │     │
+//    ├─────┼───┼───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
+//    │     │ 5 │ 6 │  7  │  8  │     │   │      │ esc  │ tab │      │     │     │
+//    └─────┴───┴───┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┴─────┴─────┘
+//                  │     │     │     │   │      │      │     │
+//                  └─────┴─────┴─────┘   └──────┴──────┴─────┘
+  &trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6     &kp N7     &kp N8    &kp N9      &kp N0   &trans
+  &kp N0   &kp N1   &kp N2   &kp N3   &kp N4   &kp N9       &kp LEFT   &kp DOWN   &kp UP    &kp RIGHT   &trans   &trans
+  &trans   &kp N5   &kp N6   &kp N7   &kp N8   &trans       &trans     &kp ESC    &kp TAB   &trans      &trans   &trans
+                             &trans   &trans   &trans       &trans     &trans     &trans
             >;
         };
         meta_layer {
+            label = "meta";
             bindings = <
 //    ┌────────┬────────┬────────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
 //    │ bt_clr │ bt_nxt │ bt_prv │     │     │     │   │     │     │     │     │     │     │
