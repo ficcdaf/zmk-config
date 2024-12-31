@@ -104,3 +104,15 @@ update:
 # upgrade zephyr-sdk and python dependencies
 upgrade-sdk:
     nix flake update --flake .
+
+# Flash the firmware
+flash side:
+    #!/usr/bin/env bash
+    if [[ {{side}} == "left" || {{side}} == "right" ]]; then
+        echo "Flashing: {{side}}"
+        file {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 || exit
+        cp {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 /run/media/fic/NICENANO
+    else
+        echo "Provide either 'left' or 'right'!"
+        exit 1
+    fi
