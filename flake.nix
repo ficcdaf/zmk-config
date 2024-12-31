@@ -32,6 +32,8 @@
           pkgs.cmake
           pkgs.dtc
           pkgs.ninja
+          # for drawing
+          pkgs.inkscape
           # pkgs.ccache
           # pkgs.dfu-util
           # pkgs.qemu
