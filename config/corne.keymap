@@ -18,14 +18,29 @@ ZMK_MOD_MORPH(smart_shft,
     bindings = <&sk LSHFT>, <&caps_word>;
     mods = <(MOD_LSFT)>;
 )
+ZMK_BEHAVIOR(long_sk, sticky_key,
+    bindings = <&kp>;
+    quick-release;
+    release-after-ms = <2000>;
+)
 ZMK_HOLD_TAP(ht_sk,
     flavor = "hold-preferred";
-    bindings = <&kp>, <&sk>;
+    bindings = <&kp>, <&long_sk>;
     tapping-term-ms = <200>;
 )
+ZMK_MOD_MORPH(smart_mod,
+bindings = <&ht_sk LALT LGUI>, <&kp LGUI>;
+mods = <(MOD_LSFT)>;
+)
+
 ZMK_TAP_DANCE(alt_mod,
 bindings = <&ht_sk LALT LGUI>, <&kp LGUI>;
 )
+/* ZMK_HOLD_TAP(alt_lgui, */
+/*     flavor = "hold-preferred"; */
+/*     tapping-term-ms = <300>; */
+/*     bindings = <&kp LGUI>, <&sk LALT>; */
+/* ) */
 ZMK_HOLD_TAP(ht_mo,
     flavor = "hold-preferred";
     tapping-term-ms = <200>;
@@ -59,44 +74,44 @@ ZMK_HOLD_TAP(ht_mo,
         compatible = "zmk,keymap";
 
         default_layer {
-            label = "base";
+            display-name = "base";
             bindings = <
-//    ┌──────┬───┬───┬──────────┬───────────────────────┬─────────────┐   ┌─────────────┬──────────────┬──────┬───┬───┬────────────┐
-//    │ esc  │ Q │ W │    F     │           P           │      B      │   │      J      │      L       │  U   │ Y │ ; │ lctl(lsft) │
-//    ├──────┼───┼───┼──────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┼───┼────────────┤
-//    │ bspc │ A │ R │    S     │           T           │      G      │   │      M      │      N       │  E   │ I │ O │     '      │
-//    ├──────┼───┼───┼──────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┼───┼────────────┤
-//    │ lsft │ Z │ X │    C     │           D           │      V      │   │      K      │      H       │  ,   │ . │ / │    lalt    │
-//    └──────┴───┴───┼──────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┴───┴────────────┘
-//                   │ &alt_mod │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo 2 ent │ mo 1 │
-//                   └──────────┴───────────────────────┴─────────────┘   └─────────────┴──────────────┴──────┘
-  &kp ESC     &kp Q   &kp W   &kp F      &kp P                     &kp B             &kp J         &kp L            &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
-  &kp BSPC    &kp A   &kp R   &kp S      &kp T                     &kp G             &kp M         &kp N            &kp E       &kp I     &kp O           &kp SQT
-  &kp LSHFT   &kp Z   &kp X   &kp C      &kp D                     &kp V             &kp K         &kp H            &kp COMMA   &kp DOT   &kp FSLH        &kp LALT
-                              &alt_mod   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo 2 ENTER   &mo 1
+//    ┌──────┬───┬───┬───────────┬───────────────────────┬─────────────┐   ┌─────────────┬──────────────┬──────┬───┬───┬────────────┐
+//    │ esc  │ Q │ W │     F     │           P           │      B      │   │      J      │      L       │  U   │ Y │ ; │ lctl(lsft) │
+//    ├──────┼───┼───┼───────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┼───┼────────────┤
+//    │ bspc │ A │ R │     S     │           T           │      G      │   │      M      │      N       │  E   │ I │ O │     '      │
+//    ├──────┼───┼───┼───────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┼───┼────────────┤
+//    │ lsft │ Z │ X │     C     │           D           │      V      │   │      K      │      H       │  ,   │ . │ / │    lalt    │
+//    └──────┴───┴───┼───────────┼───────────────────────┼─────────────┤   ├─────────────┼──────────────┼──────┼───┴───┴────────────┘
+//                   │ &alt_lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo 2 ent │ mo 1 │
+//                   └───────────┴───────────────────────┴─────────────┘   └─────────────┴──────────────┴──────┘
+  &kp ESC     &kp Q   &kp W   &kp F       &kp P                     &kp B             &kp J         &kp L            &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
+  &kp BSPC    &kp A   &kp R   &kp S       &kp T                     &kp G             &kp M         &kp N            &kp E       &kp I     &kp O           &kp SQT
+  &kp LSHFT   &kp Z   &kp X   &kp C       &kp D                     &kp V             &kp K         &kp H            &kp COMMA   &kp DOT   &kp FSLH        &kp LALT
+                              &smart_mod   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo 2 ENTER   &mo 1
             >;
         };
 
         symbol {
-            label = "symbol";
+            display-name = "symbol";
             bindings = <
 //    ┌─────┬───┬───┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬───┬───┬─────┐
-//    │     │ % │ ! │  (  │  )  │     │   │     │  &  │  :  │ = │ + │     │
+//    │     │ @ │ ! │  (  │  )  │     │   │     │  &  │  *  │ = │ : │     │
 //    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
 //    │     │ ^ │ - │  {  │  }  │  ~  │   │  ^  │  <  │  >  │ $ │ | │     │
 //    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
-//    │     │ @ │ _ │  [  │  ]  │     │   │     │  #  │  `  │ * │ \ │     │
+//    │     │ % │ _ │  [  │  ]  │     │   │     │  #  │  `  │ + │ \ │     │
 //    └─────┴───┴───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┴───┴─────┘
 //                  │     │     │     │   │     │     │     │
 //                  └─────┴─────┴─────┘   └─────┴─────┴─────┘
-  &trans   &kp PERCENT   &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS   &kp COLON   &kp EQUAL    &kp PLUS   &trans
-  &trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp CARET   &kp LT     &kp GT      &kp DOLLAR   &kp PIPE   &trans
-  &trans   &kp AT        &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH   &kp GRAVE   &kp STAR     &kp BSLH   &trans
+  &trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS   &kp STAR    &kp EQUAL    &kp COLON   &trans
+  &trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp CARET   &kp LT     &kp GT      &kp DOLLAR   &kp PIPE    &trans
+  &trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH   &kp GRAVE   &kp PLUS     &kp BSLH    &trans
                                      &trans                 &trans                  &trans          &trans      &trans     &trans
             >;
         };
         nav {
-            label = "nav";
+            display-name = "nav";
             bindings = <
 //    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬─────┬─────┐
 //    │     │  6  │  7  │  8  │  9  │  0  │   │      │      │     │      │     │     │
@@ -114,7 +129,7 @@ ZMK_HOLD_TAP(ht_mo,
             >;
         };
         meta_layer {
-            label = "meta";
+            display-name = "meta";
             bindings = <
 //    ┌────────┬────────┬────────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
 //    │ bt_clr │ bt_nxt │ bt_prv │     │     │     │   │     │     │     │     │     │     │
