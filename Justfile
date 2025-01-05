@@ -112,7 +112,7 @@ upgrade-sdk:
     nix flake update --flake .
 
 # Flash the firmware
-flash side:
+hardflash side:
     #!/usr/bin/env bash
     if [[ {{side}} == "left" || {{side}} == "right" ]]; then
         echo "Flashing: {{side}}"
@@ -122,3 +122,38 @@ flash side:
         echo "Provide either 'left' or 'right'!"
         exit 1
     fi
+
+flash side:
+  #!/usr/bin/env bash
+  timeout=30
+  elapsed=0
+
+  if [[ {{side}} == "left" || {{side}} == "right" ]]; then
+      echo "Flashing: {{side}}"
+      
+      # Verify the file exists before proceeding
+      file {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 || exit 1
+
+      echo "Waiting for /run/media/fic/NICENANO to appear..."
+
+      # Wait for the directory with a timeout using `until`
+      until [[ -d "/run/media/fic/NICENANO" ]] || ((elapsed >= timeout)); do
+          sleep 1
+          ((elapsed++))
+      done
+
+      # Check if the timeout was reached
+      if ((elapsed >= timeout)); then
+          echo "Timeout reached! NICENANO drive not found."
+          exit 1
+      else
+          echo "NICENANO drive found, flashing now..."
+      fi
+
+      # Copy the file after the directory is detected
+      cp {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 /run/media/fic/NICENANO
+      echo "Flashing done."
+  else
+      echo "Provide either 'left' or 'right'!"
+      exit 1
+  fi
