@@ -89,19 +89,19 @@ ZMK_HOLD_TAP(ht_mo,
         default_layer {
             display-name = "base";
             bindings = <
-//    ┌──────┬───┬───┬────────────┬───────────────────────┬─────────────┐   ┌─────────────┬────────────────┬────────┬───┬───┬────────────┐
-//    │ esc  │ Q │ W │     F      │           P           │      B      │   │      J      │       L        │   U    │ Y │ ; │ lctl(lsft) │
-//    ├──────┼───┼───┼────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
-//    │ bspc │ A │ R │     S      │           T           │      G      │   │      M      │       N        │   E    │ I │ O │     '      │
-//    ├──────┼───┼───┼────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
-//    │ lsft │ Z │ X │     C      │           D           │      V      │   │      K      │       H        │   ,    │ . │ / │    lalt    │
-//    └──────┴───┴───┼────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┴───┴────────────┘
-//                   │ &smart_mod │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo NAV ent │ mo SYM │
-//                   └────────────┴───────────────────────┴─────────────┘   └─────────────┴────────────────┴────────┘
-  &kp ESC     &kp Q   &kp W   &kp F        &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
-  &kp BSPC    &kp A   &kp R   &kp S        &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
-  &kp LSHFT   &kp Z   &kp X   &kp C        &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &kp LALT
-                              &smart_mod   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo NAV ENTER   &mo SYM
+//    ┌──────┬───┬───┬──────────────────┬───────────────────────┬─────────────┐   ┌─────────────┬────────────────┬────────┬───┬───┬────────────┐
+//    │ esc  │ Q │ W │        F         │           P           │      B      │   │      J      │       L        │   U    │ Y │ ; │ lctl(lsft) │
+//    ├──────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
+//    │ bspc │ A │ R │        S         │           T           │      G      │   │      M      │       N        │   E    │ I │ O │     '      │
+//    ├──────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
+//    │ lsft │ Z │ X │        C         │           D           │      V      │   │      K      │       H        │   ,    │ . │ / │    lgui    │
+//    └──────┴───┴───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┴───┴────────────┘
+//                   │ &ht_sk lalt lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo NAV ent │ mo SYM │
+//                   └──────────────────┴───────────────────────┴─────────────┘   └─────────────┴────────────────┴────────┘
+  &kp ESC     &kp Q   &kp W   &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
+  &kp BSPC    &kp A   &kp R   &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
+  &kp LSHFT   &kp Z   &kp X   &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &kp LGUI
+                              &ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo NAV ENTER   &mo SYM
             >;
         };
 
@@ -144,19 +144,19 @@ ZMK_HOLD_TAP(ht_mo,
         meta_layer {
             display-name = "meta";
             bindings = <
-//    ┌────────┬────────┬────────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │ bt_clr │ bt_nxt │ bt_prv │     │     │     │   │     │     │     │     │     │     │
-//    ├────────┼────────┼────────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │        │        │        │     │     │     │   │     │     │     │     │     │     │
-//    ├────────┼────────┼────────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │        │        │        │     │     │     │   │     │     │     │     │     │     │
-//    └────────┴────────┴────────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                               │     │     │     │   │     │     │     │
-//                               └─────┴─────┴─────┘   └─────┴─────┴─────┘
-  &bt BT_CLR   &bt BT_NXT   &bt BT_PRV   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-  &trans       &trans       &trans       &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-  &trans       &trans       &trans       &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-                                         &trans   &trans   &trans       &trans   &trans   &trans
+//    ┌────────┬─────┬─────┬────────┬────────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
+//    │ bt_clr │     │     │        │        │     │   │     │     │     │     │     │     │
+//    ├────────┼─────┼─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │        │     │     │ bt_prv │ bt_nxt │     │   │     │     │     │     │     │     │
+//    ├────────┼─────┼─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │        │     │     │        │        │     │   │     │     │     │     │     │     │
+//    └────────┴─────┴─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
+//                         │        │        │     │   │     │     │     │
+//                         └────────┴────────┴─────┘   └─────┴─────┴─────┘
+  &bt BT_CLR   &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans       &trans   &trans   &bt BT_PRV   &bt BT_NXT   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans       &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
+                                 &trans       &trans       &trans       &trans   &trans   &trans
             >;
         };
         mouse_layer {
