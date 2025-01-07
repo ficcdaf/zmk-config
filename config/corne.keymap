@@ -10,6 +10,8 @@
 #define META 3
 #define MOUSE 4
 #define FN 5
+#define FAST 6
+#define SLOW 7
 
 #include "zmk-helpers/key-labels/42.h"
 #include <behaviors.dtsi>
@@ -65,6 +67,8 @@ ZMK_HOLD_TAP(ht_mo,
 &caps_word {  // mods deactivate caps-word, requires PR #1451
     /delete-property/ ignore-modifiers;
 };
+
+
 / {
   behaviors {
   rpi: require_prior_idle {
@@ -163,19 +167,19 @@ ZMK_HOLD_TAP(ht_mo,
         mouse_layer {
             display-name = "mouse";
             bindings = <
-//    ┌───────────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬────────────────┬────────────────┬────────────────┬─────┬───────────┐
-//    │           │     │     │     │     │     │   │     │                │  &mmv MOVE_up  │                │     │           │
-//    ├───────────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼───────────┤
-//    │           │     │     │     │     │     │   │     │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_rght │     │           │
-//    ├───────────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼───────────┤
-//    │ tog MOUSE │     │     │     │     │     │   │     │      lclk      │      mclk      │      rclk      │     │ tog MOUSE │
-//    └───────────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┴─────┴───────────┘
-//                            │     │     │     │   │     │ &msc SCRL_down │  &msc SCRL_up  │
-//                            └─────┴─────┴─────┘   └─────┴────────────────┴────────────────┘
-  &trans       &trans   &trans   &trans   &trans   &trans       &trans   &trans           &mmv MOVE_UP     &trans            &trans   &trans
-  &trans       &trans   &trans   &trans   &trans   &trans       &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &trans   &trans
-  &tog MOUSE   &trans   &trans   &trans   &trans   &trans       &trans   &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &tog MOUSE
-                                 &trans   &trans   &trans       &trans   &msc SCRL_DOWN   &msc SCRL_UP
+//    ┌───────────┬─────┬─────┬─────────┬─────────┬─────┐   ┌────────────────┬────────────────┬──────────────┬────────────────┬─────┬───────────┐
+//    │           │     │     │         │         │     │   │                │                │              │                │     │           │
+//    ├───────────┼─────┼─────┼─────────┼─────────┼─────┤   ├────────────────┼────────────────┼──────────────┼────────────────┼─────┼───────────┤
+//    │           │     │     │ mo SLOW │ mo FAST │     │   │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_up │ &mmv MOVE_rght │     │           │
+//    ├───────────┼─────┼─────┼─────────┼─────────┼─────┤   ├────────────────┼────────────────┼──────────────┼────────────────┼─────┼───────────┤
+//    │ tog MOUSE │     │     │         │         │     │   │                │      lclk      │     mclk     │      rclk      │     │ tog MOUSE │
+//    └───────────┴─────┴─────┼─────────┼─────────┼─────┤   ├────────────────┼────────────────┼──────────────┼────────────────┴─────┴───────────┘
+//                            │         │         │     │   │                │ &msc SCRL_down │ &msc SCRL_up │
+//                            └─────────┴─────────┴─────┘   └────────────────┴────────────────┴──────────────┘
+  &trans       &trans   &trans   &trans     &trans     &trans       &trans           &trans           &trans         &trans            &trans   &trans
+  &trans       &trans   &trans   &mo SLOW   &mo FAST   &trans       &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &trans   &trans
+  &tog MOUSE   &trans   &trans   &trans     &trans     &trans       &trans           &mkp LCLK        &mkp MCLK      &mkp RCLK         &trans   &tog MOUSE
+                                 &trans     &trans     &trans       &trans           &msc SCRL_DOWN   &msc SCRL_UP
             >;
         };
         fn_layer {
@@ -194,6 +198,42 @@ ZMK_HOLD_TAP(ht_mo,
   &trans   &kp F1    &kp F2    &kp F3   &kp F4   &kp F5        &trans   &kp C_VOL_UP   &kp C_VOL_DN   &kp C_MUTE   &trans   &trans
   &trans   &kp F11   &kp F12   &trans   &trans   &trans        &trans   &kp C_NEXT     &kp C_PREV     &kp C_PP     &trans   &trans
                                &trans   &trans   &trans        &trans   &trans         &trans
+            >;
+        };
+        fast_layer {
+            display-name = "fast";
+            bindings = <
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
+//                      │     │     │     │   │     │     │     │
+//                      └─────┴─────┴─────┘   └─────┴─────┴─────┘
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+                             &trans   &trans   &trans       &trans   &trans   &trans
+            >;
+        };
+        slow_layer {
+            display-name = "slow";
+            bindings = <
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
+//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
+//                      │     │     │     │   │     │     │     │
+//                      └─────┴─────┴─────┘   └─────┴─────┴─────┘
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+                             &trans   &trans   &trans       &trans   &trans   &trans
             >;
         };
     };
