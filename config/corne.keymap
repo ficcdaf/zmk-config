@@ -21,6 +21,15 @@
 #include "mouse.dtsi"
 #include "combos.dtsi"
 
+// TODO: 
+// 1. Improve feel of the smart mouse
+// 2. Fix the timing issues with the combos;
+//    there aren't any false positives, 
+//    but actually false negatives 
+// 3. Find a more elegant way to do the mouse speed 
+//    modifiers that doesn't require two empty layers?
+
+
 
 &sk {  // sticky-key config
     release-after-ms = <900>;  // release after 0.9s
@@ -51,6 +60,8 @@ ZMK_TAP_DANCE(alt_mod,
 bindings = <&ht_sk LALT LGUI>, <&kp LGUI>;
 )
 
+// TODO: Will setting the second bind to &tog MOUSE let 
+// smart_mouse be a toggle while retaining the smart behavior too?
 ZMK_TRI_STATE(
     smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
     ignored-key-positions =
