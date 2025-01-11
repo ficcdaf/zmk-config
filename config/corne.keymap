@@ -52,7 +52,7 @@ bindings = <&ht_sk LALT LGUI>, <&kp LGUI>;
 )
 
 ZMK_TRI_STATE(
-    smart_mouse, bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
+    smart_mouse, bindings = <&tog MOUSE>, <&tog MOUSE>, <&tog MOUSE>;
     ignored-key-positions =
         <RM1 RM2 RM3 RT2 RB1 RB2 RB3 RH1 RH2 LM1 LM2>;
     ignored-layers = <MOUSE FAST SLOW>;)
@@ -94,19 +94,19 @@ ZMK_HOLD_TAP(ht_mo,
         default_layer {
             display-name = "base";
             bindings = <
-//    ┌──────────────┬───┬───┬──────────────────┬───────────────────────┬─────────────┐   ┌─────────────┬────────────────┬────────┬───┬───┬────────────┐
-//    │     esc      │ Q │ W │        F         │           P           │      B      │   │      J      │       L        │   U    │ Y │ ; │ lctl(lsft) │
-//    ├──────────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
-//    │     bspc     │ A │ R │        S         │           T           │      G      │   │      M      │       N        │   E    │ I │ O │     '      │
-//    ├──────────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼────────────┤
-//    │ &smart_mouse │ Z │ X │        C         │           D           │      V      │   │      K      │       H        │   ,    │ . │ / │    lgui    │
-//    └──────────────┴───┴───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┴───┴────────────┘
-//                           │ &ht_sk lalt lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo NAV ent │ mo SYM │
-//                           └──────────────────┴───────────────────────┴─────────────┘   └─────────────┴────────────────┴────────┘
-  &kp ESC        &kp Q   &kp W   &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp LC(LSHFT)
-  &kp BSPC       &kp A   &kp R   &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
-  &smart_mouse   &kp Z   &kp X   &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &kp LGUI
-                                 &ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo NAV ENTER   &mo SYM
+//    ┌──────────┬───┬───┬──────────────────┬───────────────────────┬─────────────┐   ┌─────────────┬────────────────┬────────┬───┬───┬───────┐
+//    │   esc    │ Q │ W │        F         │           P           │      B      │   │      J      │       L        │   U    │ Y │ ; │  tab  │
+//    ├──────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼───────┤
+//    │   bspc   │ A │ R │        S         │           T           │      G      │   │      M      │       N        │   E    │ I │ O │   '   │
+//    ├──────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼───────┤
+//    │ mo MOUSE │ Z │ X │        C         │           D           │      V      │   │      K      │       H        │   ,    │ . │ / │ to FN │
+//    └──────────┴───┴───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┴───┴───────┘
+//                       │ &ht_sk lalt lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo NAV ent │ mo SYM │
+//                       └──────────────────┴───────────────────────┴─────────────┘   └─────────────┴────────────────┴────────┘
+  &kp ESC     &kp Q   &kp W   &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp TAB
+  &kp BSPC    &kp A   &kp R   &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
+  &mo MOUSE   &kp Z   &kp X   &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
+                              &ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo NAV ENTER   &mo SYM
             >;
         };
 
@@ -136,14 +136,14 @@ ZMK_HOLD_TAP(ht_mo,
 //    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
 //    │     │  1  │  2  │  3  │  4  │  5  │   │ left │ down │ up  │ rght │  0  │     │
 //    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
-//    │     │     │     │ esc │ tab │     │   │      │      │     │      │     │     │
+//    │     │     │     │     │     │     │   │      │      │     │      │     │     │
 //    └─────┴─────┴─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┴─────┴─────┘
 //                      │     │     │     │   │      │      │     │
 //                      └─────┴─────┴─────┘   └──────┴──────┴─────┘
-  &trans   &kp N6   &kp N7   &kp N8    &kp N9    &kp N0       &trans     &trans     &trans   &trans      &trans   &trans
-  &trans   &kp N1   &kp N2   &kp N3    &kp N4    &kp N5       &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp N0   &trans
-  &trans   &trans   &trans   &kp ESC   &kp TAB   &trans       &trans     &trans     &trans   &trans      &trans   &trans
-                             &trans    &trans    &trans       &trans     &trans     &trans
+  &trans   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0       &trans     &trans     &trans   &trans      &trans   &trans
+  &trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp N0   &trans
+  &trans   &trans   &trans   &trans   &trans   &trans       &trans     &trans     &trans   &trans      &trans   &trans
+                             &trans   &trans   &trans       &trans     &trans     &trans
             >;
         };
         meta_layer {
@@ -167,36 +167,36 @@ ZMK_HOLD_TAP(ht_mo,
         mouse_layer {
             display-name = "mouse";
             bindings = <
-//    ┌───────────┬─────┬─────┬─────────┬─────────┬─────┐   ┌─────┬────────────────┬────────────────┬────────────────┬─────┬───────────┐
-//    │           │     │     │         │         │     │   │     │                │  &mmv MOVE_up  │                │     │           │
-//    ├───────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼───────────┤
-//    │           │     │     │ mo SLOW │ mo FAST │     │   │     │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_rght │     │           │
-//    ├───────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼───────────┤
-//    │ tog MOUSE │     │     │         │         │     │   │     │      lclk      │      mclk      │      rclk      │     │ tog MOUSE │
-//    └───────────┴─────┴─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┴─────┴───────────┘
-//                            │         │         │     │   │     │ &msc SCRL_down │  &msc SCRL_up  │
-//                            └─────────┴─────────┴─────┘   └─────┴────────────────┴────────────────┘
-  &trans       &trans   &trans   &trans     &trans     &trans       &trans   &trans           &mmv MOVE_UP     &trans            &trans   &trans
-  &trans       &trans   &trans   &mo SLOW   &mo FAST   &trans       &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &trans   &trans
-  &tog MOUSE   &trans   &trans   &trans     &trans     &trans       &trans   &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &tog MOUSE
-                                 &trans     &trans     &trans       &trans   &msc SCRL_DOWN   &msc SCRL_UP
+//    ┌────────┬─────┬─────┬─────────┬─────────┬─────┐   ┌─────┬────────────────┬────────────────┬────────────────┬─────┬─────┐
+//    │        │     │     │         │         │     │   │     │                │  &mmv MOVE_up  │                │     │     │
+//    ├────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼─────┤
+//    │        │     │     │ mo SLOW │ mo FAST │     │   │     │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_rght │     │     │
+//    ├────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼─────┤
+//    │ to DEF │     │     │         │         │     │   │     │      lclk      │      mclk      │      rclk      │     │     │
+//    └────────┴─────┴─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┴─────┴─────┘
+//                         │         │         │     │   │     │ &msc SCRL_down │  &msc SCRL_up  │
+//                         └─────────┴─────────┴─────┘   └─────┴────────────────┴────────────────┘
+  &trans    &trans   &trans   &trans     &trans     &trans       &trans   &trans           &mmv MOVE_UP     &trans            &trans   &trans
+  &trans    &trans   &trans   &mo SLOW   &mo FAST   &trans       &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &trans   &trans
+  &to DEF   &trans   &trans   &trans     &trans     &trans       &trans   &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
+                              &trans     &trans     &trans       &trans   &msc SCRL_DOWN   &msc SCRL_UP
             >;
         };
         fn_layer {
             display-name = "fn";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬──────┬──────┬──────┬─────┬─────┐
-//    │     │ f6  │ f7  │ f8  │ f9  │ f10 │   │     │      │      │      │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼─────┤
-//    │     │ f1  │ f2  │ f3  │ f4  │ f5  │   │     │ volu │ vold │ mute │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼─────┤
-//    │     │ f11 │ f12 │     │     │     │   │     │ next │ prev │ play │     │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┴─────┴─────┘
+//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬──────┬──────┬──────┬─────┬────────┐
+//    │     │ f6  │ f7  │ f8  │ f9  │ f10 │   │     │      │      │      │     │        │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼────────┤
+//    │     │ f1  │ f2  │ f3  │ f4  │ f5  │   │     │ vold │ volu │ mute │     │        │
+//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼────────┤
+//    │     │ f11 │ f12 │     │     │     │   │     │ next │ prev │ play │     │ to DEF │
+//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┴─────┴────────┘
 //                      │     │     │     │   │     │      │      │
 //                      └─────┴─────┴─────┘   └─────┴──────┴──────┘
   &trans   &kp F6    &kp F7    &kp F8   &kp F9   &kp F10       &trans   &trans         &trans         &trans       &trans   &trans
-  &trans   &kp F1    &kp F2    &kp F3   &kp F4   &kp F5        &trans   &kp C_VOL_UP   &kp C_VOL_DN   &kp C_MUTE   &trans   &trans
-  &trans   &kp F11   &kp F12   &trans   &trans   &trans        &trans   &kp C_NEXT     &kp C_PREV     &kp C_PP     &trans   &trans
+  &trans   &kp F1    &kp F2    &kp F3   &kp F4   &kp F5        &trans   &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE   &trans   &trans
+  &trans   &kp F11   &kp F12   &trans   &trans   &trans        &trans   &kp C_NEXT     &kp C_PREV     &kp C_PP     &trans   &to DEF
                                &trans   &trans   &trans        &trans   &trans         &trans
             >;
         };
