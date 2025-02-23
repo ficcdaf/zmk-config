@@ -6,8 +6,9 @@ super convenient nix-based build environment. Big thanks to urob for making a
 setup that was super easy to start building off of!
 
 Currently, I only own one ZMK keyboard, a 6 column choc Corne, so that board is
-what this configuration is optimized for. I've added a tiny bit of functionality
-on top of what urob provided: a `just flash <left|right>` command, and an
+what this configuration is optimized for. I've made a bunch of changes to the layout itself, including a custom display module for the nice!view.
+
+I've added a tiny bit of functionality to the Justfile as well: a `just flash <left|right|both(default)>` command, and an
 improved `just draw` command that styles the output a little nicer and also
 immediately converts it to `png` format.
 
@@ -427,8 +428,7 @@ remaining issues:
 - Very minor: `&bootloader` doesn't work with stm32 boards like the Planck
   ([#1086](https://github.com/zmkfirmware/zmk/issues/1086))
 
-[^1]:
-    I call it "timer-less", because the large tapping-term makes the behavior
+[^1]: I call it "timer-less", because the large tapping-term makes the behavior
     insensitive to the precise timings. One may say that there is still the
     `require-prior-idle` timeout. However, with both a large tapping-term and
     positional-hold-taps, the behavior is _not_ actually sensitive to the
@@ -436,26 +436,22 @@ remaining issues:
     i.e., variations in typing speed won't affect _what_ is being typed but
     merely _how fast_ it appears on the screen.
 
-[^2]:
-    The delay is determined by how quickly a key is released and is not directly
+[^2]: The delay is determined by how quickly a key is released and is not directly
     related to the tapping-term. But regardless of its length, most people still
     find it noticable and disruptive.
 
-[^3]:
-    E.g, if your WPM is 70 or larger, then the default of 150ms (=10500/70)
+[^3]: E.g, if your WPM is 70 or larger, then the default of 150ms (=10500/70)
     should work well. The rule of thumb is based on an average character length
     of 4.7 for English words. Taking into account 1 extra tap for `space`, this
     yields a minimum `require-prior-idle-ms` of (60 _ 1000) / (5.7 _ x) ≈ 10500
     / x milliseconds. The approximation errs on the safe side, as in practice
     home row taps tend to be faster than average.
 
-[^4]:
-    `nix-direnv` provides a vastly improved caching experience compared to only
+[^4]: `nix-direnv` provides a vastly improved caching experience compared to only
     having `direnv`, making entering and exiting the workspace instantaneous
     after the first time.
 
-[^5]:
-    This will permanently install the packages into your local profile, forgoing
+[^5]: This will permanently install the packages into your local profile, forgoing
     many of the benefits that make Nix uniquely powerful. A better approach,
     though beyond the scope of this document, is to use `home-manager` to
     maintain your user environment.
