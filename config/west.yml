@@ -26,6 +26,8 @@ manifest:
       url-base: https://github.com/urob
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: ficcdaf
+      url-base: https://github.com/ficcdaf
 
   projects:
     # This is vanilla ZMK - just using my remote to pin the current state of main,
@@ -46,6 +48,10 @@ manifest:
       path: modules/zmk/leader-key
     - name: zmk-tri-state
       path: modules/zmk/tri-state
+    - name: nice-view-gem
+      remote: ficcdaf
+      path: modules/zmk/nice-view-gem
+      revision: main
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
