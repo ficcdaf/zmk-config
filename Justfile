@@ -123,16 +123,23 @@ hardflash side:
         exit 1
     fi
 
-flash side:
+flash side="both" gem="gem":
   #!/usr/bin/env bash
   timeout=30
   elapsed=0
 
-  if [[ {{side}} == "left" || {{side}} == "right" ]]; then
-      echo "Flashing: {{side}}"
+  function fl {
+      echo "Flashing: $1"
+      if [[ {{gem}} != "nogem" ]]; then
+          GEM="_gem"
+          echo "Flashing with gem, use flash [side] nogem to disable!"
+      else
+          echo "Flashing without gem!"
+      fi
+      FILE="{{out}}/corne_$1+nice_view_adapter+nice_view$GEM-nice_nano_v2.uf2"
       
       # Verify the file exists before proceeding
-      file {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 || exit 1
+      file $FILE || exit 1
 
       echo "Waiting for /run/media/fic/NICENANO to appear..."
 
@@ -151,8 +158,24 @@ flash side:
       fi
 
       # Copy the file after the directory is detected
-      cp {{out}}/corne_{{side}}+nice_view_adapter+nice_view-nice_nano_v2.uf2 /run/media/fic/NICENANO
+      cp $FILE /run/media/fic/NICENANO
       echo "Flashing done."
+  }
+
+  if [[ {{side}} == "left" || {{side}} == "right" ]]; then
+      fl "{{side}}"
+  elif [[ {{side}} == "both" ]]; then
+      fl "left"
+      echo "Preparing to flash other side, remove keyboard..."
+      timer=5
+      until ((timer == 0)); do
+        echo "$timer"
+        sleep 1
+        ((timer--))
+      done
+      echo "Flashing other side."
+      sleep 1
+      fl "right"
   else
       echo "Provide either 'left' or 'right'!"
       exit 1
