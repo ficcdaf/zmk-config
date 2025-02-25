@@ -105,106 +105,58 @@ ZMK_HOLD_TAP(ht_mo,
         default_layer {
             display-name = "base";
             bindings = <
-//    ┌──────────┬───┬───┬──────────────────┬───────────────────────┬─────────────┐   ┌─────────────┬────────────────┬────────┬───┬───┬───────┐
-//    │   esc    │ Q │ W │        F         │           P           │      B      │   │      J      │       L        │   U    │ Y │ ; │  tab  │
-//    ├──────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼───────┤
-//    │   bspc   │ A │ R │        S         │           T           │      G      │   │      M      │       N        │   E    │ I │ O │   '   │
-//    ├──────────┼───┼───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┼───┼───────┤
-//    │ mo MOUSE │ Z │ X │        C         │           D           │      V      │   │      K      │       H        │   ,    │ . │ / │ to FN │
-//    └──────────┴───┴───┼──────────────────┼───────────────────────┼─────────────┤   ├─────────────┼────────────────┼────────┼───┴───┴───────┘
-//                       │ &ht_sk lalt lgui │ &rpi left_CONTROL spc │ &smart_shft │   │ &smart_shft │ &ht_mo NAV ent │ mo SYM │
-//                       └──────────────────┴───────────────────────┴─────────────┘   └─────────────┴────────────────┴────────┘
-  &kp ESC     &kp Q   &kp W   &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp TAB
-  &kp BSPC    &kp A   &kp R   &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
-  &mo MOUSE   &kp Z   &kp X   &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-                              &ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft   &ht_mo NAV ENTER   &mo SYM
+
+&kp ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp TAB
+&kp BSPC           &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
+&mo MOUSE          &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
+&ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &ht_mo NAV ENTER          &mo SYM
             >;
         };
 
         symbol {
             display-name = "symbol";
             bindings = <
-//    ┌─────┬───┬───┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬───┬───┬─────┐
-//    │     │ @ │ ! │  (  │  )  │     │   │     │  &  │  *  │ = │ : │     │
-//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
-//    │     │ ^ │ - │  {  │  }  │  ~  │   │  ^  │  <  │  >  │ $ │ | │     │
-//    ├─────┼───┼───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┼───┼─────┤
-//    │     │ % │ _ │  [  │  ]  │     │   │     │  #  │  `  │ + │ \ │     │
-//    └─────┴───┴───┼─────┼─────┼─────┤   ├─────┼─────┼─────┼───┴───┴─────┘
-//                  │     │     │     │   │     │     │     │
-//                  └─────┴─────┴─────┘   └─────┴─────┴─────┘
-  &trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS   &kp STAR    &kp EQUAL    &kp COLON   &trans
-  &trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp CARET   &kp LT     &kp GT      &kp DOLLAR   &kp PIPE    &trans
-  &trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH   &kp GRAVE   &kp PLUS     &kp BSLH    &trans
-                                     &trans                 &trans                  &trans          &trans      &trans     &trans
+
+&trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS   &kp STAR    &kp EQUAL    &kp COLON   &trans
+&trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp CARET   &kp LT     &kp GT      &kp DOLLAR   &kp PIPE    &trans
+&trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH   &kp GRAVE   &kp PLUS     &kp BSLH    &trans
+                                 &trans                 &trans                  &trans          &trans      &trans     &trans
             >;
         };
         nav {
             display-name = "nav";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬─────┬─────┐
-//    │     │  6  │  7  │  8  │  9  │  0  │   │      │      │     │      │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
-//    │     │  1  │  2  │  3  │  4  │  5  │   │ left │ down │ up  │ rght │  0  │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │      │      │     │      │     │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┴─────┴─────┘
-//                      │     │     │     │   │      │      │     │
-//                      └─────┴─────┴─────┘   └──────┴──────┴─────┘
-  &trans   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0       &trans     &trans     &trans   &trans      &trans   &trans
-  &trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp N0   &trans
-  &trans   &trans   &trans   &trans   &trans   &trans       &trans     &trans     &trans   &trans      &trans   &trans
-                             &trans   &trans   &trans       &trans     &trans     &trans
+
+&trans   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0       &trans     &trans     &trans   &trans      &trans   &trans
+&trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp N0   &trans
+&trans   &trans   &trans   &trans   &trans   &trans       &trans     &trans     &trans   &trans      &trans   &trans
+                         &trans   &trans   &trans       &trans     &trans     &trans
             >;
         };
         meta_layer {
             display-name = "meta";
             bindings = <
-//    ┌────────┬─────┬─────┬────────┬────────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │ bt_clr │     │     │        │        │     │   │     │     │     │     │     │     │
-//    ├────────┼─────┼─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │        │     │     │ bt_prv │ bt_nxt │     │   │     │     │     │     │     │     │
-//    ├────────┼─────┼─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │        │     │     │        │        │     │   │     │     │     │     │     │     │
-//    └────────┴─────┴─────┼────────┼────────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                         │        │        │     │   │     │     │     │
-//                         └────────┴────────┴─────┘   └─────┴─────┴─────┘
-  &bt BT_CLR   &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
-  &trans       &trans   &trans   &bt BT_PRV   &bt BT_NXT   &trans       &trans   &trans   &trans   &trans   &trans   &trans
-  &trans       &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
-                                 &trans       &trans       &trans       &trans   &trans   &trans
+
+&bt BT_CLR   &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
+&trans       &trans   &trans   &bt BT_PRV   &bt BT_NXT   &trans       &trans   &trans   &trans   &trans   &trans   &trans
+&trans       &trans   &trans   &trans       &trans       &trans       &trans   &trans   &trans   &trans   &trans   &trans
+                             &trans       &trans       &trans       &trans   &trans   &trans
             >;
         };
         mouse_layer {
             display-name = "mouse";
             bindings = <
-//    ┌────────┬─────┬─────┬─────────┬─────────┬─────┐   ┌─────┬────────────────┬────────────────┬────────────────┬─────┬─────┐
-//    │        │     │     │         │         │     │   │     │                │  &mmv MOVE_up  │                │     │     │
-//    ├────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼─────┤
-//    │        │     │     │ mo SLOW │ mo FAST │     │   │     │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_rght │     │     │
-//    ├────────┼─────┼─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┼─────┼─────┤
-//    │ to DEF │     │     │         │         │     │   │     │      lclk      │      mclk      │      rclk      │     │     │
-//    └────────┴─────┴─────┼─────────┼─────────┼─────┤   ├─────┼────────────────┼────────────────┼────────────────┴─────┴─────┘
-//                         │         │         │     │   │     │ &msc SCRL_down │  &msc SCRL_up  │
-//                         └─────────┴─────────┴─────┘   └─────┴────────────────┴────────────────┘
-  &trans    &trans   &trans   &trans     &trans     &trans       &trans   &trans           &mmv MOVE_UP     &trans            &trans   &trans
-  &trans    &trans   &trans   &mo SLOW   &mo FAST   &trans       &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &trans   &trans
-  &to DEF   &trans   &trans   &trans     &trans     &trans       &trans   &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
-                              &trans     &trans     &trans       &trans   &msc SCRL_DOWN   &msc SCRL_UP
+
+&trans    &trans   &trans   &trans     &trans     &trans       &trans   &trans           &mmv MOVE_UP     &trans            &trans   &trans
+&trans    &trans   &trans   &mo SLOW   &mo FAST   &trans       &trans   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &trans   &trans
+&to DEF   &trans   &trans   &trans     &trans     &trans       &trans   &mkp LCLK        &mkp MCLK        &mkp RCLK         &trans   &trans
+                          &trans     &trans     &trans       &trans   &msc SCRL_DOWN   &msc SCRL_UP
             >;
         };
         fn_layer {
             display-name = "fn";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬──────┬──────┬──────┬─────┬────────┐
-//    │     │ f6  │ f7  │ f8  │ f9  │ f10 │   │     │      │      │      │     │        │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼────────┤
-//    │     │ f1  │ f2  │ f3  │ f4  │ f5  │   │     │ vold │ volu │ mute │     │        │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼────────┤
-//    │     │ f11 │ f12 │     │     │     │   │     │ next │ prev │ play │     │ to DEF │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┴─────┴────────┘
-//                      │     │     │     │   │     │      │      │
-//                      └─────┴─────┴─────┘   └─────┴──────┴──────┘
+
   &trans   &kp F6    &kp F7    &kp F8   &kp F9   &kp F10       &trans   &trans         &trans         &trans       &trans   &trans
   &trans   &kp F1    &kp F2    &kp F3   &kp F4   &kp F5        &trans   &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE   &trans   &trans
   &trans   &kp F11   &kp F12   &trans   &trans   &trans        &trans   &kp C_NEXT     &kp C_PREV     &kp C_PP     &trans   &to DEF
@@ -214,15 +166,7 @@ ZMK_HOLD_TAP(ht_mo,
         fast_layer {
             display-name = "fast";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                      │     │     │     │   │     │     │     │
-//                      └─────┴─────┴─────┘   └─────┴─────┴─────┘
+
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
@@ -232,15 +176,7 @@ ZMK_HOLD_TAP(ht_mo,
         slow_layer {
             display-name = "slow";
             bindings = <
-//    ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
-//    │     │     │     │     │     │     │   │     │     │     │     │     │     │
-//    └─────┴─────┴─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┴─────┴─────┘
-//                      │     │     │     │   │     │     │     │
-//                      └─────┴─────┴─────┘   └─────┴─────┴─────┘
+
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
   &trans   &trans   &trans   &trans   &trans   &trans       &trans   &trans   &trans   &trans   &trans   &trans
