@@ -106,10 +106,10 @@ ZMK_HOLD_TAP(ht_mo,
             display-name = "base";
             bindings = <
 
-&kp ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &kp TAB
-&kp BSPC           &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
-&mo MOUSE          &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-&ht_sk LALT LGUI   &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &ht_mo NAV ENTER          &mo SYM
+&rpi LGUI ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
+&kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
+&kp LGUI                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
+&ht_sk LALT LGUI         &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &ht_mo NAV ENTER          &mo SYM
             >;
         };
 
