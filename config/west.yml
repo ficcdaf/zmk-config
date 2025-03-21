@@ -19,7 +19,7 @@
 manifest:
   defaults:
     remote: urob
-    revision: v0.1 # Pin everything to v0.1
+    revision: v0.2 # Pin everything to v0.1
 
   remotes:
     - name: urob
@@ -30,10 +30,8 @@ manifest:
       url-base: https://github.com/ficcdaf
 
   projects:
-    # This is vanilla ZMK - just using my remote to pin the current state of main,
-    # as upstream hasn't yet released a version with mouse.
     - name: zmk
-      revision: v0.1+mouse
+      remote: zmkfirmware
       import: app/west.yml
 
     # ZMK modules
@@ -52,9 +50,6 @@ manifest:
       remote: ficcdaf
       path: modules/zmk/nice-view-gem
       revision: main
-    - name: zmk-auto-layer
-      remote: urob
-      revision: v0.1 # set to same version as zmk above
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.

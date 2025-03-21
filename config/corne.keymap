@@ -104,8 +104,7 @@ ZMK_HOLD_TAP(ht_tog,
 &caps_word {  // mods deactivate caps-word, requires PR #1451
     /delete-property/ ignore-modifiers;
     /delete-property/ ignore-numbers;
-    /delete-property/ ignore-gamers;
-    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE SPACE>;
+    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
 };
 
 
