@@ -52,6 +52,9 @@ manifest:
       remote: ficcdaf
       path: modules/zmk/nice-view-gem
       revision: main
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.1 # set to same version as zmk above
 
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
