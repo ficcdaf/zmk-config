@@ -5,7 +5,7 @@
  */
 
 #define DEF 0
-#define NAV 2
+#define NUM 2
 #define SYM 1
 #define META 3
 #define MOUSE 4
@@ -75,6 +75,11 @@ ZMK_HOLD_TAP(ht_mo,
     /* require-prior-idle-ms = <125>; */
     bindings = <&mo>, <&kp>;
 )
+ZMK_HOLD_TAP(ht_tog,
+    flavor = "hold-preferred";
+    tapping-term-ms = <200>;
+    bindings = <&kp>, <&tog>;
+)
 &caps_word {  // mods deactivate caps-word, requires PR #1451
     /delete-property/ ignore-modifiers;
 };
@@ -109,7 +114,7 @@ ZMK_HOLD_TAP(ht_mo,
 &rpi LGUI ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
 &kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
 &kp LGUI                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-&ht_sk LALT LGUI         &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &ht_mo NAV ENTER          &mo SYM
+                                        &ht_tog LALT NUM         &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &rpi LGUI ENTER           &mo SYM
             >;
         };
 
@@ -117,18 +122,18 @@ ZMK_HOLD_TAP(ht_mo,
             display-name = "symbol";
             bindings = <
 
-&trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS   &kp STAR    &kp EQUAL    &kp COLON   &trans
-&trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp CARET   &kp LT     &kp GT      &kp DOLLAR   &kp PIPE    &trans
-&trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH   &kp GRAVE   &kp PLUS     &kp BSLH    &trans
-                                 &trans                 &trans                  &trans          &trans      &trans     &trans
+&trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS     &kp STAR    &kp EQUAL    &kp COLON     &trans
+&trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT    &kp DOLLAR    &kp PIPE
+&trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH     &kp GRAVE   &kp PLUS     &kp BSLH      &trans
+                                   &trans                 &trans                  &trans          &trans      &trans       &trans
             >;
         };
-        nav {
-            display-name = "nav";
+        num {
+            display-name = "num";
             bindings = <
 
-&trans   &kp N6   &kp N7   &kp N8   &kp N9   &kp N0       &trans     &trans     &trans   &trans      &trans   &trans
-&trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp LEFT   &kp DOWN   &kp UP   &kp RIGHT   &kp N0   &trans
+&trans   &trans   &trans   &trans   &trans   &trans       &trans     &trans     &trans   &trans      &trans   &trans
+&trans   &kp N1   &kp N2   &kp N3   &kp N4   &kp N5       &kp N6     &kp N7     &kp N8   &kp N9      &kp N0   &trans
 &trans   &trans   &trans   &trans   &trans   &trans       &trans     &trans     &trans   &trans      &trans   &trans
                          &trans   &trans   &trans       &trans     &trans     &trans
             >;
