@@ -35,10 +35,28 @@
     release-after-ms = <900>;  // release after 0.9s
     quick-release;             // no double capitalization when rolling keys
 };
-// tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
-ZMK_MOD_MORPH(smart_shft,
+
+// Smart Shift & Num Layer (explanation)
+// There's a left and right shift key
+// Hold one: SHIFT
+// Tap one: Sticky SHIFT
+// Double tap same one: CAPS WORD
+// Hold BOTH: NUM layer
+ZMK_MOD_MORPH(left_smart_shift_num,
+    bindings = <&left_smart_shft>, <&mo NUM>;
+    mods = <(MOD_RSFT)>;
+)
+ZMK_MOD_MORPH(right_smart_shift_num,
+    bindings = <&right_smart_shft>, <&mo NUM>;
+    mods = <(MOD_LSFT)>;
+)
+ZMK_MOD_MORPH(left_smart_shft,
     bindings = <&sk LSHFT>, <&caps_word>;
     mods = <(MOD_LSFT)>;
+)
+ZMK_MOD_MORPH(right_smart_shft,
+    bindings = <&sk RSHFT>, <&caps_word>;
+    mods = <(MOD_RSFT)>;
 )
 ZMK_BEHAVIOR(long_sk, sticky_key,
     bindings = <&kp>;
@@ -50,6 +68,9 @@ ZMK_HOLD_TAP(ht_sk,
     bindings = <&kp>, <&long_sk>;
     tapping-term-ms = <200>;
 )
+
+
+
 ZMK_MOD_MORPH(smart_mod,
 bindings = <&ht_sk LALT LGUI>, <&kp LGUI>;
 mods = <(MOD_LSFT)>;
@@ -114,7 +135,7 @@ ZMK_HOLD_TAP(ht_tog,
 &rpi LGUI ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
 &kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
 &kp LGUI                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-                                        &ht_tog LALT NUM         &rpi LEFT_CONTROL SPACE   &smart_shft       &smart_shft        &rpi LGUI ENTER           &mo SYM
+                                        &ht_tog LALT NUM         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
             >;
         };
 

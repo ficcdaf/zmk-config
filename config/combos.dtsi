@@ -13,6 +13,8 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+// ZMK_COMBO(num, &mo NUM, LH0 RH0, DEF NUM SYM, 1000, COMBO_IDLE_SLOW )
+
 /* Horizontal combos - left hand */
 // ZMK_COMBO(esc,   &kp ESC,      LT3 LT2,     DEF NAV SYM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
