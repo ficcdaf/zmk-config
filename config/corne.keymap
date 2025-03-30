@@ -135,6 +135,13 @@ ZMK_HOLD_TAP(ht_tog,
           then-layer = <3>;
       };
   };
+    macros {
+        dbl: double {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ESC &kp K_CANCEL>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
@@ -142,7 +149,7 @@ ZMK_HOLD_TAP(ht_tog,
             display-name = "base";
             bindings = <
 
-&rpi LGUI ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
+&kp ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
 &kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
 &kp CAPS                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
                                         &ht_sk LALT LA(LCTRL)         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
