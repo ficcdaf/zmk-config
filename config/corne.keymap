@@ -154,10 +154,10 @@ ZMK_HOLD_TAP(ht_tog,
             display-name = "base";
             bindings = <
 
-&kp ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
+&kp ESC                  &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
 &kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
 &kp CAPS                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-                                        &ht_kp LALT RALT         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
+                                        &kp LALT         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
             >;
         };
 
@@ -165,9 +165,9 @@ ZMK_HOLD_TAP(ht_tog,
             display-name = "symbol";
             bindings = <
 
-&trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans          &trans      &kp AMPS     &kp STAR    &kp EQUAL    &kp COLON     &trans
-&trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE       &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT    &kp DOLLAR    &kp PIPE
-&trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &trans          &trans      &kp HASH     &kp GRAVE   &kp PLUS     &kp BSLH      &trans
+&trans   &kp AT        &kp EXCL    &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS   &trans                   &trans               &kp AMPS     &kp STAR    &kp EQUAL    &kp COLON     &trans
+&trans   &kp CARET     &kp MINUS   &kp LEFT_BRACE         &kp RIGHT_BRACE         &kp TILDE                &kp LEFT             &kp DOWN     &kp UP      &kp RIGHT    &kp DOLLAR    &kp PIPE
+&trans   &kp PERCENT   &kp UNDER   &kp LEFT_BRACKET       &kp RIGHT_BRACKET       &kp PAUSE_BREAK          &kp PAUSE_BREAK      &kp HASH     &kp GRAVE   &kp PLUS     &kp BSLH      &trans
                                    &trans                 &trans                  &trans          &trans      &trans       &trans
             >;
         };
