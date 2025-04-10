@@ -68,6 +68,11 @@ ZMK_HOLD_TAP(ht_sk,
     bindings = <&kp>, <&lsk>;
     tapping-term-ms = <200>;
 )
+ZMK_HOLD_TAP(ht_kp,
+    flavor = "hold-preferred";
+    bindings = <&kp>, <&kp>;
+    tapping-term-ms = <200>;
+)
 
 
 
@@ -152,7 +157,7 @@ ZMK_HOLD_TAP(ht_tog,
 &kp ESC            &kp Q                     &kp W             &kp F              &kp P                     &kp B             &kp J         &kp L              &kp U       &kp Y     &kp SEMICOLON   &rpi LGUI TAB
 &kp BSPC                 &kp A                     &kp R             &kp S              &kp T                     &kp G             &kp M         &kp N              &kp E       &kp I     &kp O           &kp SQT
 &kp CAPS                 &kp Z                     &kp X             &kp C              &kp D                     &kp V             &kp K         &kp H              &kp COMMA   &kp DOT   &kp FSLH        &to FN
-                                        &ht_sk LALT LA(LCTRL)         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
+                                        &ht_kp LALT RALT         &rpi LEFT_CONTROL SPACE   &left_smart_shift_num       &right_smart_shift_num        &rpi LGUI ENTER           &mo SYM
             >;
         };
 
